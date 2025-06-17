@@ -1,4 +1,4 @@
-import { toGregorian, toJalali } from "../../_lib/jalali/index.js";
+import { toGregorian, toBikramSambat } from "../../_lib/bikramSambat/index.js";
 
 /**
  *
@@ -13,8 +13,8 @@ export function setFullYear(
   const gd = cleanDate.getDate();
   const gm = cleanDate.getMonth() + 1;
   const gy = cleanDate.getFullYear();
-  const j = toJalali(gy, gm, gd);
-  const [year, month = j.jm - 1, date = j.jd] = args;
+  const j = toBikramSambat(gy, gm, gd);
+  const [year, month = j.bm - 1, date = j.bd] = args;
   const g = toGregorian(year, month + 1, date);
   return cleanDate.setFullYear(g.gy, g.gm - 1, g.gd);
 }

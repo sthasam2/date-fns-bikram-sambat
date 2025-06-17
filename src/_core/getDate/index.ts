@@ -1,4 +1,4 @@
-import { toJalali } from "../../_lib/jalali/index.js";
+import { toBikramSambat } from "../../_lib/bikramSambat/index.js";
 
 /**
  *
@@ -9,5 +9,5 @@ export function getDate(cleanDate: Date) {
   const gd = cleanDate.getDate();
   const gm = cleanDate.getMonth() + 1;
   const gy = cleanDate.getFullYear();
-  return toJalali(gy, gm, gd).jd;
+  return toBikramSambat(gy, gm, gd).bd;
 }

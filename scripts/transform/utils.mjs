@@ -1,4 +1,4 @@
-import { toJalali } from "../../src/_lib/jalali/index";
+import { toNepali } from "../../src/_lib/bikramSambat/index";
 
 export function isStringDate(node) {
   if (node.type === "StringLiteral") {
@@ -59,8 +59,8 @@ export function generateDateCommentText(node) {
     return null;
   }
   const [y, m, d = 1] = args;
-  const jd = toJalali(y, m + 1, d);
-  const ja = [jd.jy, jd.jm, jd.jd];
+  const jd = toNepali(y, m + 1, d);
+  const ja = [jd.by, jd.bm, jd.bd];
   return ja.join("/");
 }
 
@@ -80,8 +80,8 @@ export function generateStringDateCommentText(node) {
   if (isNaN(y) || isNaN(m) || isNaN(d)) {
     return null;
   }
-  const jd = toJalali(y, m, d);
-  const ja = [jd.jy, jd.jm, jd.jd];
+  const jd = toNepali(y, m, d);
+  const ja = [jd.by, jd.bm, jd.bd];
   return ja.join("/");
 }
 

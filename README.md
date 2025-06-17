@@ -1,8 +1,8 @@
-[![date-fns-jalali](docs/logotype.svg)](https://date-fns.org/)
+[![date-fns-bikram-sambat](docs/logotype.svg)](https://date-fns.org/)
 
 🔥️ **NEW**: [date-fns v4.0 with first-class time zone support is out!](https://blog.date-fns.org/v40-with-time-zone-support/)
 
-date-fns-jalali provides the most comprehensive, yet simple and consistent toolset for manipulating JavaScript dates in a browser & Node.js for jalali calendar.
+date-fns-bikram-sambat provides the most comprehensive, yet simple and consistent toolset for manipulating JavaScript dates in a browser & Node.js for bikramSambat calendar.
 
 👉 [Documentation](https://date-fns.org/)
 
@@ -20,10 +20,10 @@ It's like [Lodash](https://lodash.com) for dates
 - **I18n**: Dozens of locales. Include only what you need.
 - [and many more benefits](https://date-fns.org/)
 
-**date-fns-jalali** provides **date-fns** toolset for [jalali calendar](https://en.wikipedia.org/wiki/Jalali_calendar)
+**date-fns-bikram-sambat** provides **date-fns** toolset for [bikramSambat calendar](https://en.wikipedia.org/wiki/BikramSambat_calendar)
 
 ```js
-import { compareAsc, format, newDate } from "date-fns-jalali";
+import { compareAsc, format, newDate } from "date-fns-bikram-sambat";
 
 format(new Date(2014, 1, 11), "yyyy-MM-dd");
 //=> '1392-11-22'
@@ -47,11 +47,11 @@ dates.sort(compareAsc);
 // ]
 ```
 
-The library is available as an [npm package](https://www.npmjs.com/package/date-fns-jalali).
+The library is available as an [npm package](https://www.npmjs.com/package/date-fns-bikram-sambat).
 To install the package run:
 
 ```bash
-npm install date-fns-jalali --save
+npm install date-fns-bikram-sambat --save
 ```
 
 ## Docs

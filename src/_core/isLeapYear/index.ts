@@ -1,4 +1,4 @@
-import { isLeapJalaliYear } from "../../_lib/jalali/index.js";
+import { isLeapBikramSambatYear } from "../../_lib/bikramSambat/index.js";
 
 /**
  *
@@ -6,5 +6,5 @@ import { isLeapJalaliYear } from "../../_lib/jalali/index.js";
  * @returns {boolean}
  */
 export function isLeapYear(year: number) {
-  return isLeapJalaliYear(year);
+  return isLeapBikramSambatYear(year);
 }

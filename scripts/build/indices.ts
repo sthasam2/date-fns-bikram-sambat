@@ -13,121 +13,121 @@ import { listFns } from "../_lib/listFns.js";
 import { listLocales } from "../_lib/listLocales.js";
 
 interface File {
-  name: string;
-  path: string;
-  fullPath: string;
+	name: string;
+	path: string;
+	fullPath: string;
 }
 
 (async () => {
-  const locales = await listLocales();
-  const fns = await listFns();
-  const fpFns = await listFPFns();
+	const locales = await listLocales();
+	const fns = await listFns();
+	const fpFns = await listFPFns();
 
-  await Promise.all([
-    generatePackageJSON({ fns, fpFns, locales }).then((json) =>
-      writeFile("package.json", json),
-    ),
+	await Promise.all([
+		generatePackageJSON({ fns, fpFns, locales }).then((json) =>
+			writeFile("package.json", json),
+		),
 
-    writeFile("src/index.ts", generateIndex({ files: fns })),
+		writeFile("src/index.ts", generateIndex({ files: fns })),
 
-    writeFile("src/fp/index.ts", generateIndex({ files: fpFns, isFP: true })),
+		writeFile("src/fp/index.ts", generateIndex({ files: fpFns, isFP: true })),
 
-    writeFile("src/locale/index.ts", generateIndex({ files: locales })),
+		writeFile("src/locale/index.ts", generateIndex({ files: locales })),
 
-    writeFile("typedoc.json", generateTypeDoc(fns)),
-  ]);
+		writeFile("typedoc.json", generateTypeDoc(fns)),
+	]);
 })();
 
 interface GeneratePackageJSONProps {
-  fns: File[];
-  fpFns: File[];
-  locales: File[];
+	fns: File[];
+	fpFns: File[];
+	locales: File[];
 }
 
 async function generatePackageJSON({
-  fns,
-  fpFns,
-  locales,
+	fns,
+	fpFns,
+	locales,
 }: GeneratePackageJSONProps) {
-  const packageJSON = JSON.parse(await readFile("package.json", "utf-8"));
-  packageJSON.exports = Object.fromEntries(
-    [
-      ["./package.json", "./package.json"],
-      [
-        ".",
-        {
-          require: {
-            types: "./index.d.cts",
-            default: "./index.cjs",
-          },
-          import: {
-            types: "./index.d.ts",
-            default: "./index.js",
-          },
-        },
-      ],
-    ]
-      .concat(mapExports(["./constants", "./locale", "./fp"], "."))
-      .concat(mapExports(mapFiles(fns)))
-      .concat(mapExports(mapFiles(fpFns), "./fp"))
-      .concat(mapExports(mapFiles(locales), "./locale")),
-  );
-  return JSON.stringify(packageJSON, null, 2);
+	const packageJSON = JSON.parse(await readFile("package.json", "utf-8"));
+	packageJSON.exports = Object.fromEntries(
+		[
+			["./package.json", "./package.json"],
+			[
+				".",
+				{
+					require: {
+						types: "./index.d.cts",
+						default: "./index.cjs",
+					},
+					import: {
+						types: "./index.d.ts",
+						default: "./index.js",
+					},
+				},
+			],
+		]
+			.concat(mapExports(["./constants", "./locale", "./fp"], "."))
+			.concat(mapExports(mapFiles(fns)))
+			.concat(mapExports(mapFiles(fpFns), "./fp"))
+			.concat(mapExports(mapFiles(locales), "./locale")),
+	);
+	return JSON.stringify(packageJSON, null, 2);
 }
 
 function mapFiles(files: File[]) {
-  return files.map((file) => file.path);
+	return files.map((file) => file.path);
 }
 
 function mapExports(paths: string[], prefix = ".") {
-  return paths.map((path) => {
-    const pth = `${prefix}${path.slice(1)}`;
-    return [
-      pth,
-      {
-        require: {
-          types: `${pth}.d.cts`,
-          default: `${pth}.cjs`,
-        },
-        import: {
-          types: `${pth}.d.ts`,
-          default: `${pth}.js`,
-        },
-      },
-    ];
-  });
+	return paths.map((path) => {
+		const pth = `${prefix}${path.slice(1)}`;
+		return [
+			pth,
+			{
+				require: {
+					types: `${pth}.d.cts`,
+					default: `${pth}.cjs`,
+				},
+				import: {
+					types: `${pth}.d.ts`,
+					default: `${pth}.js`,
+				},
+			},
+		];
+	});
 }
 
 interface GenerateIndexProps {
-  files: File[];
-  isFP?: boolean;
+	files: File[];
+	isFP?: boolean;
 }
 
 function generateIndex({ files, isFP }: GenerateIndexProps): string {
-  const lines = files
-    .map((file) => `export * from "${file.path}/index.js";`)
-    .concat(`export type * from "${isFP ? ".." : "."}/types.js";`);
+	const lines = files
+		.map((file) => `export * from "${file.path}/index.js";`)
+		.concat(`export type * from "${isFP ? ".." : "."}/types.js";`);
 
-  return `// This file is generated automatically by \`scripts/build/indices.ts\`. Please, don't change it.
+	return `// This file is generated automatically by \`scripts/build/indices.ts\`. Please, don't change it.
 
 ${lines.join("\n")}
 `;
 }
 
 function generateTypeDoc(fns: Awaited<ReturnType<typeof listFns>>) {
-  return (
-    "// This file is generated automatically by `scripts/build/indices.ts`. Please, don't change it.\n" +
-    JSON.stringify(
-      {
-        name: "date-fns-jalali",
-        entryPoints: fns
-          .map((fn) => fn.fullPath)
-          .concat(["./src/constants/index.ts"]),
-        json: "./tmp/docs.json",
-        plugin: ["typedoc-plugin-missing-exports"],
-      },
-      null,
-      2,
-    )
-  );
+	return (
+		"// This file is generated automatically by `scripts/build/indices.ts`. Please, don't change it.\n" +
+		JSON.stringify(
+			{
+				name: "date-fns-bikram-sambat",
+				entryPoints: fns
+					.map((fn) => fn.fullPath)
+					.concat(["./src/constants/index.ts"]),
+				json: "./tmp/docs.json",
+				plugin: ["typedoc-plugin-missing-exports"],
+			},
+			null,
+			2,
+		)
+	);
 }

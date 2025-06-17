@@ -76,27 +76,27 @@ Promise.all([
   });
 
 function indexTemplate() {
-  return `import * as dateFnsJalali from "./index.js";
-window.dateFnsJalali = {
-  ...window.dateFnsJalali,
-  ...dateFnsJalali
+  return `import * as dateFnsBikramSambat from "./index.js";
+window.dateFnsBikramSambat = {
+  ...window.dateFnsBikramSambat,
+  ...dateFnsBikramSambat
 };`;
 }
 
 function fpIndexTemplate() {
   return `import * as fp from "../fp.js";
-window.dateFnsJalali = {
-  ...window.dateFnsJalali,
+window.dateFnsBikramSambat = {
+  ...window.dateFnsBikramSambat,
   fp
 };`;
 }
 
 function localesIndexTemplate() {
   return `import * as locales from "../locale.js";
-window.dateFnsJalali = {
-  ...window.dateFnsJalali,
+window.dateFnsBikramSambat = {
+  ...window.dateFnsBikramSambat,
   locale: {
-    ...window.dateFnsJalali?.locale,
+    ...window.dateFnsBikramSambat?.locale,
     ...locales
   }
 };`;
@@ -104,10 +104,10 @@ window.dateFnsJalali = {
 
 function localeTemplate({ name, code }: LocaleFile) {
   return `import { ${name} } from "../${code}.js";
-window.dateFnsJalali = {
-  ...window.dateFnsJalali,
+window.dateFnsBikramSambat = {
+  ...window.dateFnsBikramSambat,
   locale: {
-    ...window.dateFnsJalali?.locale,
+    ...window.dateFnsBikramSambat?.locale,
     ${name}
   }
 };`;

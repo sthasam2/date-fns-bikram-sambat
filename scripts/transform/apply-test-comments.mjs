@@ -8,7 +8,7 @@ import {
   isStringDate,
   isUTCDate,
 } from "./utils";
-import { toGregorian } from "../../src/_lib/jalali/index";
+import { toGregorian } from "../../src/_lib/bikramSambat/index";
 
 const months = [
   "Jan",
