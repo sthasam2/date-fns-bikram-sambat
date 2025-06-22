@@ -7,68 +7,48 @@
 
 import { describe, expect, it } from "vitest";
 import {
-  gregorianToDate,
-  isLeapBikramSambatYear,
-  toBikramSambat,
-  toGregorian
+	isLeapBikramSambatYear,
+	toBikramSambat,
+	toGregorian,
 } from "./index.js";
 
-const START = gregorianToDate(-1000, 1, 1);
-const END = gregorianToDate(10000, 1, 1);
-
-const BS_YEAR_DAYS = (() => {
-  const arr: [number, number][] = [];
-  // 6 31-day months
-  // 6 30-day months
-  for (let m = 1; m <= 12; m++) {
-    for (let d = 1; d <= 31; d++) {
-      if (d === 31 && m > 6) {
-        continue;
-      }
-      arr.push([m, d]);
-    }
-  }
-
-  return arr;
-})();
-
-
 describe("toBikramSambat", () => {
-  it("should converts a Gregorian date to Bikram Sambat", () => {
-    const result = toBikramSambat(2021, 1, 1);
-    expect(result).toEqual({ by: 1399, bm: 10, bd: 12 });
-  });
-  it("should converts a leap year correctly", () => {
-    const result = toBikramSambat(2021, 3, 20);
-    expect(result).toEqual({ by: 1399, bm: 12, bd: 30 });
-  });
-  it("should converts a non leap year correctly", () => {
-    const result = toBikramSambat(2022, 3, 21);
-    expect(result).toEqual({ by: 1401, bm: 1, bd: 1 });
-  });
+	it("should converts a Gregorian date to Bikram Sambat", () => {
+		const result = toBikramSambat(2021, 1, 1);
+		expect(result).toEqual({ by: 2021, bm: 8, bd: 17 });
+	});
+	it("should converts a leap year correctly", () => {
+		const result = toBikramSambat(2021, 3, 20);
+		expect(result).toEqual({ by: 2077, bm: 11, bd: 7 });
+	});
+	it("should converts a non leap year correctly", () => {
+		const result = toBikramSambat(2022, 3, 21);
+		expect(result).toEqual({ by: 2078, bm: 11, bd: 7 });
+	});
 });
 
 describe("toGregorian", () => {
-  it("should converts a Bikram Sambat date to Gregorian", () => {
-    const result = toGregorian(1399, 10, 12);
-    expect(result).toEqual({ gy: 2021, gm: 1, gd: 1 });
-  });
-  it("should converts a leap year correctly", () => {
-    const result = toGregorian(1399, 12, 30);
-    expect(result).toEqual({ gy: 2021, gm: 3, gd: 20 });
-  });
-  it("should converts a non leap year correctly", () => {
-    const result = toGregorian(1400, 12, 30); // eq 1401, 1, 1
-    expect(result).toEqual({ gy: 2022, gm: 3, gd: 21 });
-  });
+	it("should converts a Bikram Sambat date to Gregorian", () => {
+		const result = toGregorian(2077, 8, 17);
+		expect(result).toEqual({ gy: 2021, gm: 1, gd: 1 });
+	});
+	it("should converts a leap year correctly", () => {
+		const result = toGregorian(2077, 11, 7);
+		expect(result).toEqual({ gy: 2021, gm: 3, gd: 20 });
+	});
+	it("should converts a non leap year correctly", () => {
+		const result = toGregorian(2078, 11, 7); // eq 1401, 1, 1
+		expect(result).toEqual({ gy: 2022, gm: 3, gd: 21 });
+	});
 });
 
 describe("isLeapYear", () => {
-  it("should tell correctly", () => {
-    expect(isLeapBikramSambatYear(1398)).toBe(false);
-    expect(isLeapBikramSambatYear(1399)).toBe(true);
-    expect(isLeapBikramSambatYear(1400)).toBe(false);
-    expect(isLeapBikramSambatYear(1401)).toBe(false);
-    expect(isLeapBikramSambatYear(1402)).toBe(false);
-  });
+	it("should tell correctly", () => {
+		expect(isLeapBikramSambatYear(2075)).toBe(false);
+		expect(isLeapBikramSambatYear(2076)).toBe(true);
+		expect(isLeapBikramSambatYear(2077)).toBe(false);
+		expect(isLeapBikramSambatYear(2078)).toBe(false);
+		expect(isLeapBikramSambatYear(2079)).toBe(false);
+		expect(isLeapBikramSambatYear(2080)).toBe(true);
+	});
 });

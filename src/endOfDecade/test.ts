@@ -6,7 +6,7 @@ import { TZDate, tz } from "@date-fns/tz";
 
 describe("endOfDecade", () => {
 	it("returns the date with the time set to 23:59:59.999 and the date set to the last millisecond of a decade", () => {
-		const date = /* 1396/1/21 */ new Date(2017, 3 /* Apr */, 10, 0, 0, 0);
+		const date = /* 2073/11/28 */ new Date(2017, 3 /* Apr */, 10, 0, 0, 0);
 		const result = endOfDecade(date);
 		expect(result).toEqual(
 			/* 1399/12/30 */ new Date(2021, 2 /* Mar */, 20, 23, 59, 59, 999),

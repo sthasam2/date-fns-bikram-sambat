@@ -6,7 +6,7 @@ import { differenceInYears } from "./index.js";
 describe("differenceInYears", () => {
 	it("returns the number of full years between the given dates", () => {
 		const result = differenceInYears(
-			/* 1391/4/12 */ new Date(2012, 6 /* Jul */, 2, 18, 0),
+			/* 2069/2/18 */ new Date(2012, 6 /* Jul */, 2, 18, 0),
 			/* 1390/4/11 */ new Date(2011, 6 /* Jul */, 2, 6, 0),
 		);
 		expect(result).toBe(1);
@@ -15,7 +15,7 @@ describe("differenceInYears", () => {
 	it("returns a negative number if the time value of the first date is smaller", () => {
 		const result = differenceInYears(
 			/* 1390/4/11 */ new Date(2011, 6 /* Jul */, 2, 6, 0),
-			/* 1391/4/12 */ new Date(2012, 6 /* Jul */, 2, 18, 0),
+			/* 2069/2/18 */ new Date(2012, 6 /* Jul */, 2, 18, 0),
 		);
 		expect(result).toBe(-1);
 	});

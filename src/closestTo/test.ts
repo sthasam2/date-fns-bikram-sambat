@@ -9,7 +9,7 @@ describe("closestTo", () => {
 		const date = /* 1393/4/11 */ new Date(2014, 6 /* Jul */, 2);
 		const result = closestTo(date, [
 			/* 1394/6/9 */ new Date(2015, 7 /* Aug */, 31),
-			/* 1391/4/12 */ new Date(2012, 6 /* Jul */, 2),
+			/* 2069/2/18 */ new Date(2012, 6 /* Jul */, 2),
 		]);
 		expect(result).toEqual(/* 1394/6/9 */ new Date(2015, 7 /* Aug */, 31));
 	});
@@ -30,7 +30,7 @@ describe("closestTo", () => {
 		const date = /* 1393/4/11 */ new Date(2014, 6 /* Jul */, 2).getTime();
 		const result = closestTo(date, [
 			/* 1394/6/9 */ new Date(2015, 7 /* Aug */, 31).getTime(),
-			/* 1391/4/12 */ new Date(2012, 6 /* Jul */, 2).getTime(),
+			/* 2069/2/18 */ new Date(2012, 6 /* Jul */, 2).getTime(),
 		]);
 		expect(result).toEqual(/* 1394/6/9 */ new Date(2015, 7 /* Aug */, 31));
 	});
@@ -45,7 +45,7 @@ describe("closestTo", () => {
 		const date = new Date(NaN);
 		const result = closestTo(date, [
 			/* 1394/6/9 */ new Date(2015, 7 /* Aug */, 31),
-			/* 1391/4/12 */ new Date(2012, 6 /* Jul */, 2),
+			/* 2069/2/18 */ new Date(2012, 6 /* Jul */, 2),
 		]);
 
 		expect(result instanceof Date && isNaN(result.getTime())).toBe(true);
@@ -56,7 +56,7 @@ describe("closestTo", () => {
 		const result = closestTo(date, [
 			/* 1394/6/9 */ new Date(2015, 7 /* Aug */, 31),
 			new Date(NaN),
-			/* 1391/4/12 */ new Date(2012, 6 /* Jul */, 2),
+			/* 2069/2/18 */ new Date(2012, 6 /* Jul */, 2),
 		]);
 
 		expect(result instanceof Date && isNaN(result.getTime())).toBe(true);
