@@ -26,7 +26,7 @@ describe("setQuarter", () => {
 			/* 1393/4/10 */ new Date(2014, 6 /* Jul */, 1).getTime(),
 			4,
 		);
-		expect(result).toEqual(/* 1393/10/10 */ new Date(2014, 11 /* Dec */, 31));
+		expect(result).toEqual(/* 2071/08/16 */ new Date(2014, 11 /* Dec */, 31));
 	});
 
 	it("does not mutate the original date", () => {

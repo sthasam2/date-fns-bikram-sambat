@@ -9,7 +9,7 @@ describe("isWithinInterval", () => {
 			/* 1393/8/9 */ new Date(2014, 9 /* Oct */, 31),
 			{
 				start: /* 2071/04/16 */ new Date(2014, 8 /* Sep */, 1),
-				end: /* 1393/10/10 */ new Date(2014, 11 /* Dec */, 31),
+				end: /* 2071/08/16 */ new Date(2014, 11 /* Dec */, 31),
 			},
 		);
 		expect(result).toBe(true);
@@ -20,7 +20,7 @@ describe("isWithinInterval", () => {
 			/* 2071/04/16 */ new Date(2014, 8 /* Sep */, 1),
 			{
 				start: /* 2071/04/16 */ new Date(2014, 8 /* Sep */, 1),
-				end: /* 1393/10/10 */ new Date(2014, 11 /* Dec */, 31),
+				end: /* 2071/08/16 */ new Date(2014, 11 /* Dec */, 31),
 			},
 		);
 		expect(result).toBe(true);
@@ -28,10 +28,10 @@ describe("isWithinInterval", () => {
 
 	it("returns true if the given date has same time as the right boundary of the interval", () => {
 		const result = isWithinInterval(
-			/* 1393/10/10 */ new Date(2014, 11 /* Dec */, 31),
+			/* 2071/08/16 */ new Date(2014, 11 /* Dec */, 31),
 			{
 				start: /* 2071/04/16 */ new Date(2014, 8 /* Sep */, 1),
-				end: /* 1393/10/10 */ new Date(2014, 11 /* Dec */, 31),
+				end: /* 2071/08/16 */ new Date(2014, 11 /* Dec */, 31),
 			},
 		);
 		expect(result).toBe(true);
@@ -39,10 +39,10 @@ describe("isWithinInterval", () => {
 
 	it("returns true if the given date and the both boundaries are the same", () => {
 		const result = isWithinInterval(
-			/* 1393/10/10 */ new Date(2014, 11 /* Dec */, 31),
+			/* 2071/08/16 */ new Date(2014, 11 /* Dec */, 31),
 			{
-				start: /* 1393/10/10 */ new Date(2014, 11 /* Dec */, 31),
-				end: /* 1393/10/10 */ new Date(2014, 11 /* Dec */, 31),
+				start: /* 2071/08/16 */ new Date(2014, 11 /* Dec */, 31),
+				end: /* 2071/08/16 */ new Date(2014, 11 /* Dec */, 31),
 			},
 		);
 		expect(result).toBe(true);
@@ -53,7 +53,7 @@ describe("isWithinInterval", () => {
 			/* 1392/11/22 */ new Date(2014, 1 /* Feb */, 11),
 			{
 				start: /* 2071/04/16 */ new Date(2014, 8 /* Sep */, 1),
-				end: /* 1393/10/10 */ new Date(2014, 11 /* Dec */, 31),
+				end: /* 2071/08/16 */ new Date(2014, 11 /* Dec */, 31),
 			},
 		);
 		expect(result).toBe(false);
@@ -64,7 +64,7 @@ describe("isWithinInterval", () => {
 			/* 1393/8/9 */ new Date(2014, 9 /* Oct */, 31).getTime(),
 			{
 				start: /* 2071/04/16 */ new Date(2014, 8 /* Sep */, 1).getTime(),
-				end: /* 1393/10/10 */ new Date(2014, 11 /* Dec */, 31).getTime(),
+				end: /* 2071/08/16 */ new Date(2014, 11 /* Dec */, 31).getTime(),
 			},
 		);
 		expect(result).toBe(true);
@@ -74,7 +74,7 @@ describe("isWithinInterval", () => {
 		const result = isWithinInterval(
 			/* 1393/8/9 */ new Date(2014, 9 /* Oct */, 31),
 			{
-				start: /* 1393/10/10 */ new Date(2014, 11 /* Dec */, 31),
+				start: /* 2071/08/16 */ new Date(2014, 11 /* Dec */, 31),
 				end: /* 2071/04/16 */ new Date(2014, 8 /* Sep */, 1),
 			},
 		);
@@ -84,7 +84,7 @@ describe("isWithinInterval", () => {
 	it("returns false if the given date is `Invalid Date`", () => {
 		const result = isWithinInterval(new Date(NaN), {
 			start: /* 2071/04/16 */ new Date(2014, 8 /* Sep */, 1),
-			end: /* 1393/10/10 */ new Date(2014, 11 /* Dec */, 31),
+			end: /* 2071/08/16 */ new Date(2014, 11 /* Dec */, 31),
 		});
 		expect(!result).toBe(true);
 	});
@@ -104,7 +104,7 @@ describe("isWithinInterval", () => {
 		const result = isWithinInterval(
 			/* 1393/8/9 */ new Date(2014, 9 /* Oct */, 31),
 			{
-				start: /* 1393/10/10 */ new Date(2014, 11 /* Dec */, 31),
+				start: /* 2071/08/16 */ new Date(2014, 11 /* Dec */, 31),
 				end: new Date(NaN),
 			},
 		);

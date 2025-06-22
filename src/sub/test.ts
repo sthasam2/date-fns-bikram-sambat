@@ -82,7 +82,7 @@ describe("sub", () => {
 	});
 
 	it("works well if the desired month has fewer days and the provided date is in the last day of a month", () => {
-		const date = /* 1393/10/10 */ new Date(2014, 11 /* Dec */, 31);
+		const date = /* 2071/08/16 */ new Date(2014, 11 /* Dec */, 31);
 		const result = sub(date, { months: 3 });
 		expect(result).toEqual(/* 1393/7/10 */ new Date(2014, 9 /* Sep */, 2));
 	});
