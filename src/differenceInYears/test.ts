@@ -90,7 +90,7 @@ describe("differenceInYears", () => {
 		it("the days and months of the given dates are the same", () => {
 			const result = differenceInYears(
 				/* 1393/6/15 */ new Date(2014, 8 /* Sep */, 6),
-				/* 1391/6/15 */ new Date(2012, 8 /* Sep */, 5),
+				/* 2069/4/20 */ new Date(2012, 8 /* Sep */, 5),
 			);
 			expect(result).toBe(2);
 		});

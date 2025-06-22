@@ -48,7 +48,7 @@ describe("differenceInCalendarYears", () => {
 		it("the days and months of the given dates are the same", () => {
 			const result = differenceInCalendarYears(
 				/* 1393/6/14 */ new Date(2014, 8 /* Sep */, 5),
-				/* 1391/6/15 */ new Date(2012, 8 /* Sep */, 5),
+				/* 2069/4/20 */ new Date(2012, 8 /* Sep */, 5),
 			);
 			expect(result).toBe(2);
 		});

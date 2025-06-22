@@ -7,7 +7,7 @@ import { eachYearOfInterval } from "./index.js";
 describe("eachYearOfInterval", () => {
 	it("returns an array with starts of days from the day of the start date to the day of the end date", () => {
 		const result = eachYearOfInterval({
-			start: /* 1391/7/15 */ new Date(2012, 9 /* Oct */, 6),
+			start: /* 2069/5/20 */ new Date(2012, 9 /* Oct */, 6),
 			end: /* 1396/7/20 */ new Date(2017, 9 /* Oct */, 12),
 		});
 		expect(result).toEqual([
@@ -22,7 +22,7 @@ describe("eachYearOfInterval", () => {
 
 	it("accepts timestamps", () => {
 		const result = eachYearOfInterval({
-			start: /* 1391/7/15 */ new Date(2012, 9 /* Oct */, 6).getTime(),
+			start: /* 2069/5/20 */ new Date(2012, 9 /* Oct */, 6).getTime(),
 			end: /* 1396/7/20 */ new Date(2017, 9 /* Oct */, 12).getTime(),
 		});
 		expect(result).toEqual([
@@ -37,7 +37,7 @@ describe("eachYearOfInterval", () => {
 
 	it("handles the dates that are not starts of days", () => {
 		const result = eachYearOfInterval({
-			start: /* 1391/7/15 */ new Date(2012, 9 /* Oct */, 6, 6, 35),
+			start: /* 2069/5/20 */ new Date(2012, 9 /* Oct */, 6, 6, 35),
 			end: /* 1396/7/20 */ new Date(2017, 9 /* Oct */, 12, 22, 15),
 		});
 		expect(result).toEqual([
@@ -69,7 +69,7 @@ describe("eachYearOfInterval", () => {
 	it("returns reversed array if the start date is after the end date", () => {
 		const result = eachYearOfInterval({
 			start: /* 1396/7/20 */ new Date(2017, 9 /* Oct */, 12),
-			end: /* 1391/7/15 */ new Date(2012, 9 /* Oct */, 6),
+			end: /* 2069/5/20 */ new Date(2012, 9 /* Oct */, 6),
 		});
 		expect(result).toEqual([
 			/* 2073/11/8 */ new Date(2017, 2 /* Mar */, 21),
@@ -107,7 +107,7 @@ describe("eachYearOfInterval", () => {
 
 	describe("options.step", () => {
 		const interval = {
-			start: /* 1391/7/15 */ new Date(2012, 9 /* Oct */, 6),
+			start: /* 2069/5/20 */ new Date(2012, 9 /* Oct */, 6),
 			end: /* 1396/7/20 */ new Date(2017, 9 /* Oct */, 12),
 		};
 
