@@ -8,7 +8,7 @@ import { addDays } from "./index.js";
 describe("addDays", () => {
 	it("adds the given number of days", () => {
 		const result = addDays(/* 2071/04/16 */ new Date(2014, 8 /* Sep */, 1), 10);
-		expect(result).toEqual(/* 1393/6/20 */ new Date(2014, 8 /* Sep */, 11));
+		expect(result).toEqual(/* 2071/4/26 */ new Date(2014, 8 /* Sep */, 11));
 	});
 
 	it("accepts a timestamp", () => {
@@ -16,7 +16,7 @@ describe("addDays", () => {
 			/* 2071/04/16 */ new Date(2014, 8 /* Sep */, 1).getTime(),
 			10,
 		);
-		expect(result).toEqual(/* 1393/6/20 */ new Date(2014, 8 /* Sep */, 11));
+		expect(result).toEqual(/* 2071/4/26 */ new Date(2014, 8 /* Sep */, 11));
 	});
 
 	it("does not mutate the original date", () => {

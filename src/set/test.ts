@@ -46,7 +46,7 @@ describe("set", () => {
 		const result = set(/* 2071/04/16 */ new Date(2014, 8 /* Sep */), {
 			date: 20,
 		});
-		expect(result).toEqual(/* 1393/6/20 */ new Date(2014, 8 /* Sep */, 11));
+		expect(result).toEqual(/* 2071/4/26 */ new Date(2014, 8 /* Sep */, 11));
 	});
 
 	it("sets hours", () => {

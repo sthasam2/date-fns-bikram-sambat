@@ -75,7 +75,7 @@ describe("setDay", () => {
 					weekStartsOn: 1,
 				},
 			);
-			expect(result).toEqual(/* 1393/6/24 */ new Date(2014, 8 /* Sep */, 15));
+			expect(result).toEqual(/* 2071/4/30 */ new Date(2014, 8 /* Sep */, 15));
 		});
 	});
 

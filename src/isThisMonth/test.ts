@@ -9,7 +9,7 @@ describe("isThisMonth", () => {
 	const { fakeNow } = fakeDate(/* 2071/04/16 */ new Date(2014, 8 /* Sep */, 1));
 
 	it("returns true if the given date and the current date have the same month (and year)", () => {
-		const date = /* 1393/6/24 */ new Date(2014, 8 /* Sep */, 15);
+		const date = /* 2071/4/30 */ new Date(2014, 8 /* Sep */, 15);
 		expect(isThisMonth(date)).toBe(true);
 	});
 
@@ -19,7 +19,7 @@ describe("isThisMonth", () => {
 	});
 
 	it("accepts a timestamp", () => {
-		const date = /* 1393/6/24 */ new Date(2014, 8 /* Sep */, 15).getTime();
+		const date = /* 2071/4/30 */ new Date(2014, 8 /* Sep */, 15).getTime();
 		expect(isThisMonth(date)).toBe(true);
 	});
 

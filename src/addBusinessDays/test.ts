@@ -10,12 +10,12 @@ describe("addBusinessDays", () => {
 			/* 2071/04/16 */ new Date(2014, 8 /* Sep */, 1),
 			12,
 		);
-		expect(result).toEqual(/* 1393/6/24 */ new Date(2014, 8 /* Sep */, 15));
+		expect(result).toEqual(/* 2071/4/30 */ new Date(2014, 8 /* Sep */, 15));
 	});
 
 	it("handles negative amount", () => {
 		const result = addBusinessDays(
-			/* 1393/6/24 */ new Date(2014, 8 /* Sep */, 15),
+			/* 2071/4/30 */ new Date(2014, 8 /* Sep */, 15),
 			-12,
 		);
 		expect(result).toEqual(/* 2071/04/16 */ new Date(2014, 8 /* Sep */, 1));
@@ -23,31 +23,31 @@ describe("addBusinessDays", () => {
 
 	it("returns the Monday when 1 day is added on the Friday", () => {
 		expect(
-			addBusinessDays(/* 1398/10/19 */ new Date(2020, 0 /* Jan */, 9), 1),
+			addBusinessDays(/* 2076/8/24 */ new Date(2020, 0 /* Jan */, 9), 1),
 		).toEqual(
 			// Friday
 			// Monday
-			/* 1398/10/21 */ new Date(2020, 0 /* Jan */, 11),
+			/* 2076/8/26 */ new Date(2020, 0 /* Jan */, 11),
 		);
 	});
 
 	it("returns the Monday when 1 day is added on the Satuday", () => {
 		expect(
-			addBusinessDays(/* 1398/10/20 */ new Date(2020, 0 /* Jan */, 10), 1),
+			addBusinessDays(/* 2076/8/25 */ new Date(2020, 0 /* Jan */, 10), 1),
 		).toEqual(
 			// Saturday
 			// Monday
-			/* 1398/10/21 */ new Date(2020, 0 /* Jan */, 11),
+			/* 2076/8/26 */ new Date(2020, 0 /* Jan */, 11),
 		);
 	});
 
 	it("returns the Monday when 1 day is added on the Sunday", () => {
 		expect(
-			addBusinessDays(/* 1398/10/22 */ new Date(2020, 0 /* Jan */, 12), 1),
+			addBusinessDays(/* 2076/8/27 */ new Date(2020, 0 /* Jan */, 12), 1),
 		).toEqual(
 			// Sunday
 			// Monday
-			/* 1398/10/23 */ new Date(2020, 0 /* Jan */, 13),
+			/* 2076/8/28 */ new Date(2020, 0 /* Jan */, 13),
 		);
 	});
 
@@ -64,7 +64,7 @@ describe("addBusinessDays", () => {
 			/* 2071/04/16 */ new Date(2014, 8 /* Sep */, 1).getTime(),
 			12,
 		);
-		expect(result).toEqual(/* 1393/6/24 */ new Date(2014, 8 /* Sep */, 15));
+		expect(result).toEqual(/* 2071/4/30 */ new Date(2014, 8 /* Sep */, 15));
 	});
 
 	it("does not mutate the original date", () => {
