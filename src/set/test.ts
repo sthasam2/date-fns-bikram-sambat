@@ -190,7 +190,7 @@ describe("set", () => {
 
 		it("sets the last day of new month if the initial date was the last day of a longer month", () => {
 			const result = set(/* 1393/6/31 */ new Date(2014, 8 /* Sep */, 22), {
-				month: 8 /* Azar */,
+				month: 8,
 			});
 			expect(result).toEqual(/* 1393/9/30 */ new Date(2014, 11 /* Dec */, 21));
 		});
