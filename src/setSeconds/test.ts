@@ -5,79 +5,79 @@ import { assertType } from "../_lib/test/index.js";
 import { setSeconds } from "./index.js";
 
 describe("setSeconds", () => {
-  it("sets the seconds", () => {
-    const result = setSeconds(
-      /* 1393/6/10 */ new Date(2014, 8 /* Sep */, 1, 11, 30, 40, 500),
-      45,
-    );
-    expect(result).toEqual(
-      /* 1393/6/10 */ new Date(2014, 8 /* Sep */, 1, 11, 30, 45, 500),
-    );
-  });
+	it("sets the seconds", () => {
+		const result = setSeconds(
+			/* 2071/04/16 */ new Date(2014, 8 /* Sep */, 1, 11, 30, 40, 500),
+			45,
+		);
+		expect(result).toEqual(
+			/* 2071/04/16 */ new Date(2014, 8 /* Sep */, 1, 11, 30, 45, 500),
+		);
+	});
 
-  it("accepts a timestamp", () => {
-    const result = setSeconds(
-      /* 1393/6/10 */ new Date(2014, 8 /* Sep */, 1, 11, 30, 15).getTime(),
-      45,
-    );
-    expect(result).toEqual(
-      /* 1393/6/10 */ new Date(2014, 8 /* Sep */, 1, 11, 30, 45),
-    );
-  });
+	it("accepts a timestamp", () => {
+		const result = setSeconds(
+			/* 2071/04/16 */ new Date(2014, 8 /* Sep */, 1, 11, 30, 15).getTime(),
+			45,
+		);
+		expect(result).toEqual(
+			/* 2071/04/16 */ new Date(2014, 8 /* Sep */, 1, 11, 30, 45),
+		);
+	});
 
-  it("does not mutate the original date", () => {
-    const date = /* 1393/6/10 */ new Date(2014, 8 /* Sep */, 1, 11, 30, 40);
-    setSeconds(date, 15);
-    expect(date).toEqual(
-      /* 1393/6/10 */ new Date(2014, 8 /* Sep */, 1, 11, 30, 40),
-    );
-  });
+	it("does not mutate the original date", () => {
+		const date = /* 2071/04/16 */ new Date(2014, 8 /* Sep */, 1, 11, 30, 40);
+		setSeconds(date, 15);
+		expect(date).toEqual(
+			/* 2071/04/16 */ new Date(2014, 8 /* Sep */, 1, 11, 30, 40),
+		);
+	});
 
-  it("returns `Invalid Date` if the given date is invalid", () => {
-    const result = setSeconds(new Date(NaN), 45);
-    expect(result instanceof Date && isNaN(result.getTime())).toBe(true);
-  });
+	it("returns `Invalid Date` if the given date is invalid", () => {
+		const result = setSeconds(new Date(NaN), 45);
+		expect(result instanceof Date && isNaN(result.getTime())).toBe(true);
+	});
 
-  it("returns `Invalid Date` if the given amount is NaN", () => {
-    const result = setSeconds(
-      /* 1393/6/10 */ new Date(2014, 8 /* Sep */, 1, 11, 30, 40, 500),
-      NaN,
-    );
-    expect(result instanceof Date && isNaN(result.getTime())).toBe(true);
-  });
+	it("returns `Invalid Date` if the given amount is NaN", () => {
+		const result = setSeconds(
+			/* 2071/04/16 */ new Date(2014, 8 /* Sep */, 1, 11, 30, 40, 500),
+			NaN,
+		);
+		expect(result instanceof Date && isNaN(result.getTime())).toBe(true);
+	});
 
-  it("resolves the date type by default", () => {
-    const result = setSeconds(Date.now(), 45);
-    expect(result).toBeInstanceOf(Date);
-    assertType<assertType.Equal<Date, typeof result>>(true);
-  });
+	it("resolves the date type by default", () => {
+		const result = setSeconds(Date.now(), 45);
+		expect(result).toBeInstanceOf(Date);
+		assertType<assertType.Equal<Date, typeof result>>(true);
+	});
 
-  it("resolves the argument type if a date extension is passed", () => {
-    const result = setSeconds(new UTCDate(), 45);
-    expect(result).toBeInstanceOf(UTCDate);
-    assertType<assertType.Equal<UTCDate, typeof result>>(true);
-  });
+	it("resolves the argument type if a date extension is passed", () => {
+		const result = setSeconds(new UTCDate(), 45);
+		expect(result).toBeInstanceOf(UTCDate);
+		assertType<assertType.Equal<UTCDate, typeof result>>(true);
+	});
 
-  describe("context", () => {
-    it("allows to specify the context", () => {
-      expect(
-        setSeconds(/* 1403/1/22 */ "2024-04-10T07:00:00Z", 45, {
-          in: tz("Asia/Singapore"),
-        }).toISOString(),
-      ).toBe(/* 1403/1/22 */ "2024-04-10T15:00:45.000+08:00");
-      expect(
-        setSeconds(/* 1403/1/22 */ "2024-04-10T07:00:00Z", 45, {
-          in: tz("America/New_York"),
-        }).toISOString(),
-      ).toBe(/* 1403/1/22 */ "2024-04-10T03:00:45.000-04:00");
-    });
+	describe("context", () => {
+		it("allows to specify the context", () => {
+			expect(
+				setSeconds(/* 1403/1/22 */ "2024-04-10T07:00:00Z", 45, {
+					in: tz("Asia/Singapore"),
+				}).toISOString(),
+			).toBe(/* 1403/1/22 */ "2024-04-10T15:00:45.000+08:00");
+			expect(
+				setSeconds(/* 1403/1/22 */ "2024-04-10T07:00:00Z", 45, {
+					in: tz("America/New_York"),
+				}).toISOString(),
+			).toBe(/* 1403/1/22 */ "2024-04-10T03:00:45.000-04:00");
+		});
 
-    it("resolves the context date type", () => {
-      const result = setSeconds(/* 1393/6/10 */ "2014-09-01T00:00:00Z", 45, {
-        in: tz("Asia/Tokyo"),
-      });
-      expect(result).toBeInstanceOf(TZDate);
-      assertType<assertType.Equal<TZDate, typeof result>>(true);
-    });
-  });
+		it("resolves the context date type", () => {
+			const result = setSeconds(/* 2071/04/16 */ "2014-09-01T00:00:00Z", 45, {
+				in: tz("Asia/Tokyo"),
+			});
+			expect(result).toBeInstanceOf(TZDate);
+			assertType<assertType.Equal<TZDate, typeof result>>(true);
+		});
+	});
 });
